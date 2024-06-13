@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import soluevo.marcacao_exames.api.requests.MedicoRequest;
 import soluevo.marcacao_exames.domain.models.Medico;
 import soluevo.marcacao_exames.domain.service.MedicoService;
 
@@ -29,7 +30,8 @@ public class MedicoController {
     
 
     @PostMapping
-    public ResponseEntity<Medico> createMedico(@RequestBody Medico request) {
+    public ResponseEntity<Medico> createMedico(@RequestBody MedicoRequest request) {
+        System.out.println("dsfs"+request);
         Medico response = medicoService.createMedico(request);
         
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

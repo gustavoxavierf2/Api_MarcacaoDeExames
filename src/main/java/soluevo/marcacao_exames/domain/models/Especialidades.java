@@ -1,10 +1,11 @@
 package soluevo.marcacao_exames.domain.models;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,13 +20,17 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "TB_ESPECIALIDADES")
-public class Especialidades {
+public class Especialidades implements Serializable{
+    private static final Long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false, unique = true)
     private String especialidade;
-    @Column(nullable = false)
+
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToMany(mappedBy = "FK_Especialidades", fetch = FetchType.EAGER)
-    private Set<Medico> FK_Medicos = new HashSet<>();
+    //@JsonIgnore
+    private Set<Medico> FK_Medicos;
 }
