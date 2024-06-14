@@ -30,7 +30,7 @@ public class Especialidades implements Serializable{
     private String especialidade;
 
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @ManyToMany(mappedBy = "FK_Especialidades", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "fk_especialidades", fetch = FetchType.EAGER)
     //@JsonIgnore
-    private Set<Medico> FK_Medicos;
+    private Set<Medico> fk_medicos;
 }

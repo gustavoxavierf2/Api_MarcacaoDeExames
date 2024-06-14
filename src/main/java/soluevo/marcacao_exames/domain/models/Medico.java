@@ -39,11 +39,11 @@ public class Medico implements Serializable{
     @Column(nullable = false, unique = true)
     private String crm;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_medico_especialidade",
         joinColumns = @JoinColumn(name = "medico_id"),
         inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
-    private Set<Especialidades> FK_Especialidades=new HashSet<>();
+    private Set<Especialidades> fk_especialidades = new HashSet<>();
 
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "FK_MedicoId", fetch = FetchType.LAZY)
